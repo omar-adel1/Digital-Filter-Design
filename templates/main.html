@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <!-- CSS and Fonts -->
    <link rel="stylesheet" href="../static/css/index.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  
      <!-- Plotly -->
      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -23,14 +27,32 @@
   <div id="zplane-container">
     <canvas id="zplane-canvas"></canvas>
   </div>
-  <div id="controls">
-    <button id="clear-zeros">Clear Zeros</button>
-    <button id="clear-poles">Clear Poles</button>
-    <button id="clear-all">Clear All</button>
-    <button id="draw-zeros">Draw Zeros</button>
-    <button id="draw-poles">Draw Poles</button>
-    <label for="add-conjugate">
-      <input type="checkbox" id="add-conjugate">Add Conjugates</label>
+  <div id="controls" class="graph_buttons">
+    <div class="clear"><button id="clear-zeros" class="clear_btn">Clear <span class="material-symbols-outlined">exposure_zero</span></button></div>
+    <div class="clear"><button id="clear-poles" class="clear_btn">Clear <div class="radi"><span class="material-symbols-outlined"id="t">close</span></button></div>
+    <div class="clear"><button id="clear-all" class="clear_btn">Clear <br>All</button></div>
+    
+    <div class="inpu">
+    <button id="draw-poles" class="circle-zero"><div class="radi"><span class="material-symbols-outlined">close</span>
+      <label for="pole">Pole</label></div>
+    </button>
+    </div>
+      <div class="inpu">
+        <button class="circle-zero" id="draw-zeros" ><div class="radi">
+          <span class="material-symbols-outlined">exposure_zero</span>
+          <label for="zero">Zero</label></button>
+      </div>
+      <div class="input_container">
+        <input type="checkbox" name="filter_btn" id="add-conjugate" >
+        <div class="radio_tile">
+            <span class="material-symbols-outlined">add</span>
+            <label for="add-conjugate">Conjugates</label>
+        </div>
+    </div>
+      </div>
+     
+    
+    
   </div>
   <script src="/static/script.js"></script>
 </body>
