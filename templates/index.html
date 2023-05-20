@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Filter Designer</title>
   <link rel="stylesheet" href="/static/style.css"/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="bigest-container">
@@ -33,6 +33,13 @@
           <button class="new-clear-zero-btn">Clear Zero</button>
           <button class="new-clear-poles-btn">Clear Poles</button>
           <button class="new-clear-all-btn">Clear All</button>
+        </div>
+      </div>
+      <div class="z-figuers">
+        <div class="fig filter" id="fig-mag"></div>
+        <div class="fig phase" id="fig-phase"></div>
+        <div class="btn phase-correct-btn">
+          <button class="allpass_btn" id="allpass_btn" >All-Pass Filters</button>
         </div>
       </div>
     </div>

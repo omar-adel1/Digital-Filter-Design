@@ -23,7 +23,7 @@ body {
 }
 
 .new-container {
-  width: 65vw;
+  width: 100%;
   height: 90vh;
   background-color: var(--white);
   border-radius: 20px;
@@ -61,10 +61,6 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-}
-
-.new-btn:hover {
-  background-color: var(--darkest-color);
 }
 
 .import-btn {
@@ -162,8 +158,6 @@ body {
   border-radius: 50%;
   cursor: move;
   transform: translate(-50%, -50%);
-  /* border: 3px solid darkblue;
-  background-color: var(--white); */
 }
 
 .new-pole::after {
@@ -174,44 +168,6 @@ body {
   font-weight: bold;
   pointer-events: none;
 }
-
-.menu {
-  border-radius: 10px;
-  position: fixed;
-  top: 50%;
-  left: 25%;
-  background-color: var(--darkest-color);
-  color: var(--white);
-  padding: 10px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform: scale(0);
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-}
-
-.menu-show {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.option {
-  padding: 5px;
-  transition: 0.3s;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 5px;
-  text-align: center;
-  margin-bottom: 5px;
-  font-size: 14px;
-}
-
-.option:hover {
-  background-color: var(--dark-grey);
-}
-
 .new-test {
   position: absolute;
   width: 15px;
@@ -323,9 +279,6 @@ body {
   display: none;
 }
 
-.new-sig-mode:hover {
-  background-color: var(--dark-grey);
-}
 .Clear-buttons {
   display: flex;
   justify-content: space-between;
@@ -348,5 +301,46 @@ body {
 .new-clear-zero-btn:hover,
 .new-clear-poles-btn:hover,
 .new-clear-all-btn:hover {
-  background-color: var(--darkest-color);
+  background-color: rgb(33, 34, 37);
+  box-shadow: 0 0 12px rgb(33, 34, 37);
+}
+
+/**Second Column*/
+.z-figuers {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fig {
+  background-color: var(--light-grey);
+  width: 60%;
+  height: 42%;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+}
+
+.allpass_btn {
+  position: absolute;
+  top: 35rem;
+  left: 600px;
+  background-color: rgb(33, 34, 37);
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: ease 0.3s;
+}
+
+.allpass_btn:hover {
+  box-shadow: 0 0 12px rgb(33, 34, 37);
+}
+
+.allpass_btn:active {
+  scale: 0.9;
 }
