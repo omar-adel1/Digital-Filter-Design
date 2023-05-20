@@ -1,6 +1,22 @@
+body {
+  background: linear-gradient(90deg, rgba(24, 41, 50, 1) 0%, rgba(18, 82, 119, 1) 48%, rgba(24, 41, 50, 1) 100%);
+
+  overflow: hidden;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  text-rendering: optimizeSpeed;
+
+}
+
 #zplane-container {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 800px;
     margin: 20px auto;
     position: relative;
     
@@ -202,4 +218,17 @@ input:hover+.radio_tile {
 input:checked+.radio_tile label,
 input:checked+.radio_tile span {
   color: white;
+}
+.z-plane {
+  background-color: rgb(238, 238, 238);
+  min-width: 410px;
+  height: 685px;
+  border-radius: 15px;
+}
+
+#canvas {
+  transform: translateY(100px);
+  margin-left: 25px;
+  background: white;
+  border-radius: 10px;
 }
