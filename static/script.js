@@ -597,8 +597,6 @@ function setUpPlot(div, time, amp, graph_title) {
 
 // Import Signal
 
-// Import Signal
-
 let working = false;
 let interval;
 let uploadSignal = document.getElementById('Upload_signal_button');
