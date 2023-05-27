@@ -1,48 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Filter Designer</title>
-  <link rel="stylesheet" href="/static/style.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- CSS and Fonts -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  
+     <!-- Plotly -->
+     <!-- Plotly for data visualization -->
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <title>Z-Plane Filter Designer</title>
 </head>
 <body>
-  <div class="bigest-container">
-    <div class="new-container">
-      <div class="z-container">
-        <div class="new-controls">
-          <div class="new-zeros-poles">
-            <div class="new-zeros new-z-p active-mode">Zeros</div>
-            <div class="new-poles new-z-p">Poles</div>
+<div id="whole_page">
+  <!-- First Column -->
+  <div id="First-Column">
+  <div id="zplane-container">
+    <div class="graph" >
+      <canvas id="zplane-canvas"></canvas>
+    </div>
+  </div>
+  <div id="controls" class="graph_buttons">
+    <div class="row">
+      <div class="add_buttons col-4">
+        <div class="inpu">
+          <button class="circle-zero" id="draw-zeros">
+            <div class="radi">
+              <span class="material-symbols-outlined">exposure_zero</span>
+              <label for="draw-zero">Zero</label>
+              <!-- <button class="delete-btn" id="delete-zero" onclick="deleteShape(this)">Delete</button> -->
+            </div>
+          </button>
+        </div>
+    
+        <div class="inpu">
+          <button id="draw-poles" class="circle-zero">
+            <div class="radi">
+              <span class="material-symbols-outlined">close</span>
+              <label for="draw-poles">Pole</label>
+            </div>
+          </button>
+        </div>
+    
+        <div class="input_container">
+          <input type="checkbox" name="filter_btn" id="add_conjugate">
+          <div class="radio_tile">
+            <span class="material-symbols-outlined">z*</span>
+            <label for="add_conjugate">conjugate</label>
           </div>
-        </div>
-        <div class="new-z-container">
-          <div class="new-test"></div>
-          <div class="new-z-graph">
-            <!-- <div class="new-circle-test"></div> -->
-            <div class="new-x-axis"></div>
-            <div class="new-y-axis"></div>
-          </div>
-        </div>
-        <div class="Clear-buttons">
-          <button class="new-clear-zero-btn">Clear Zero</button>
-          <button class="new-clear-poles-btn">Clear Poles</button>
-          <button class="new-clear-all-btn">Clear All</button>
-        </div>
-      </div>
-      <div class="z-figuers">
-        <div class="fig filter" id="fig-mag"></div>
-        <div class="fig phase" id="fig-phase"></div>
-        <div class="btn phase-correct-btn">
-          <button class="allpass_btn" id="allpass_btn" >All-Pass Filters</button>
         </div>
       </div>
     </div>
+    
+    <div class="row">
+      <div class="clear_buttons col-4">
+        <div class="clear">
+          <button id="clear-zeros" class="clear_btn">
+            Clear <span class="material-symbols-outlined">exposure_zero</span>
+          </button>
+        </div>
+        <div class="clear">
+          <button id="clear-poles" class="clear_btn">
+            Clear <div class="radi"><span class="material-symbols-outlined" id="t">close</span>
+          </button>
+        </div>
+        <div class="clear">
+          <button id="clear-all" class="clear_btn">Clear <br>All</button>
+        </div>
+      </div>
+     </div>
+    </div>
   </div>
+<!--Magnitude and phase plots column-->
+  <div class="mag_phase_response_col">
+    <div class="container_plot">
+      <div id="magnitude_response" class="resp_plot"></div>
+      </div>
+      <div class="container_plot">
+        <div id="phase_response" class="resp_plot"></div>
+      </div>
+      <div class="all_pass">
+        <button class="allpass_btn" id="allpass_btn">All-Pass Filters</button>
+      </div>
+  </div>
+  <!--Last col Real-Time Filtering -->
+  <div class="Plot-signal">
+    <div class="Upload_Slider_container">
+      <div>
+        <form id="upload_signal" method="post" enctype="multipart/form-data">
+          <label for="Upload_signal_button" class="Upload_button" id="Upload_signal_label">Upload Signal</label>
+          <input id="Upload_signal_button" type="file" name="file" />
+        </form>
+      </div>
+      <div class="speed">
+        <input type="range" id="speed_slider" min="1" max="100" value="1" step="1">
+        <span id="speed_label">Speed: 1x</span>
+      </div>
+    </div>
+    <div class="Signal-graph">
+      <div id="General_signal" class="signal_plot"></div>
+    </div>
+    <div class="Signal-graph">
+      <div id="Filtered_signal" class="signal_plot"></div>
+    </div>
+  </div>
+  <!-- All Pass Filter Page -->
+<div class="all_pass_wrapper" id="all_pass_wrapper">
+  <!-- Close Div Button -->
+  <span class="material-symbols-outlined close_div_btn" id="all_pass_close">cancel</span>
+  <!-- All-Pass Response -->
+  <div class="all_pass_response">
+      <div class="all_pass_cumulative">
+          <h3>Put the a value</h3>
+          <div class="input_a_value">
+              <input type="number" name="" id="a_real" class="a_input" placeholder="Real">
+              <input type="number" name="" id="a_img" class="a_input" placeholder="Img">
+              <button class="add_filter_btn" id="add_filter_btn">Add Filter</button>
+          </div>
+          <div class="plot2_container">
+              <div id="cumulative_apf_graph" class="cumulative_apf_graph"></div>
+          </div>
+      </div>
+      <div class="filters_history">
+        <h3>Added Filters</h3>
+        <div class="added_content" id="added_content">
+        </div>
+    </div>
+      <div class="original_response">
+          <h3>Final Phase Gain</h3>
+          <button class="apply_filter_btn" id="apply_filter_btn">Apply Filter</button>
+          <div class="plot2_container">
+              <div id="current_apf_graph" class="current_apf_graph"></div>
+          </div>
+      </div>
+  </div>
+   <!-- Catalogue Slider -->
+   <div class="catalogue">
+    <div class="container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide-active">
+                    <img src="../static/images/(a = -0.5).png" alt="">
+                    <div class="info">
+                        <h4 class="name">
+                            a = <span class="real">-0.5</span><span class="img"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active">
+                    <img src="../static/images/(a = -0.9).png" alt="">
+                    <div class="info">
+                        <h4 class="name">
+                            a = <span class="real">-0.9</span><span class="img"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active">
+                    <img src="../static/images/(a = 0.1).png" alt="">
+                    <div class="info">
+                        <h4 class="name">
+                            a = <span class="real">0.1</span><span class="img"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active">
+                    <img src="../static/images/(a = 0.5).png" alt="">
+                    <div class="info">
+                        <h4 class="name">
+                            a = <span class="real">0.5</span><span class="img"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active">
+                    <img src="../static/images/(a = 0.9).png" alt="">
+                    <div class="info">
+                        <h4 class="name">
+                            a = <span class="real">0.9</span><span class="img"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active">
+                    <img src="../static/images/(a = 1+1j).png" alt="">
+                    <div class="info">
+                        <h4 class="name">
+                           a = <span class="real">1</span><span>+</span><span class="img">1</span><span>j</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+
+
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+  <script src="/static/script.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 </html>
