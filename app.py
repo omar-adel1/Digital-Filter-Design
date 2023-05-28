@@ -81,7 +81,7 @@ def applyFilter():
     output_signal = signal.lfilter(num, dem, OutputSignal).real
     output_point = output_signal[-1]
     # return [output_point]
-    return jsonify({"y_point": output_point.tolist()})
+    return jsonify({"y_point": output_point.tolist()/10.5})
 
 @app.route('/finalPhaseResponse', methods=['GET', 'POST'])
 def finalPhaseResponse():
