@@ -27,6 +27,11 @@ The Z-Plane Filter Designer offers the following features:
 - **Conjugate Support**: Users have the choice to add complex elements with their conjugates or only use the individual components.
 - **Frequency Response Visualization**: The application generates two graphs, one for the magnitude response and another for the phase response, allowing users to visualize the frequency response of the designed filter based on the placed elements.
 
+
+## Preview
+![main widow](./Preview/s86BVE91WQ.gif)
+
+
 ## Authors
 
 | Name | GitHub | LinkedIn |
