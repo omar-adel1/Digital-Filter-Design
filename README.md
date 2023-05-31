@@ -11,12 +11,25 @@ This project is a web application that allows users to design custom digital fil
 - [Acknowledgements](#Acknowledgements)
 
 ## Built with
-
-<img src="https://img.shields.io/badge/web%20framework-Flask-blue" alt="web framework">
-<img src="https://img.shields.io/badge/programming%20language-Python-yellow" alt="programming language">
-<img src="https://img.shields.io/badge/programming%20language-JavaScript-yellow" alt="programming language">
-<img src="https://img.shields.io/badge/markup%20language-HTML-orange" alt="markup language">
-<img src="https://img.shields.io/badge/style%20sheet%20language-CSS-blue" alt="style sheet language">
+<table>
+  <tr>
+    <td>
+      <img src="https://img.shields.io/badge/web%20framework-Flask-blue" alt="web framework">
+    </td>
+    <td>
+      <img src="https://img.shields.io/badge/programming%20language-Python-yellow" alt="programming language">
+    </td>
+    <td>
+      <img src="https://img.shields.io/badge/programming%20language-JavaScript-yellow" alt="programming language">
+    </td>
+    <td>
+      <img src="https://img.shields.io/badge/markup%20language-HTML-orange" alt="markup language">
+    </td>
+    <td>
+      <img src="https://img.shields.io/badge/style%20sheet%20language-CSS-blue" alt="style sheet language">
+    </td>
+  </tr>
+</table>
 
 ## Features
 
